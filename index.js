@@ -32,6 +32,7 @@ const discord_api = axios.create({
 app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
   const interaction = req.body;
 
+  // "YO" Command
   if (interaction.type === InteractionType.APPLICATION_COMMAND) {
     console.log(interaction.data.name)
     if(interaction.data.name == 'yo'){
@@ -43,6 +44,7 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
       });
     }
 
+    // "DM" Command
     if(interaction.data.name == 'dm'){
       // https://discord.com/developers/docs/resources/user#create-dm
       let c = (await discord_api.post(`/users/@me/channels`,{
@@ -62,7 +64,7 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
         // https://discord.com/developers/docs/interactions/receiving-and-responding#responding-to-an-interaction
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data:{
-          content:'👍'
+          content:'❗ Just sent you that DM fam.'
         }
       });
     }
