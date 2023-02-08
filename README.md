@@ -1,4 +1,4 @@
-# starter-discord-bot
+# ❗ Point Blanks Discord Bot
 
 Follow these instructions after deploying this repo on Cyclic.sh
 
